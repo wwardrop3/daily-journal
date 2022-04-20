@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-export const EntryForm = ({ entry, moods, onFormSubmit }) => {
+export const EntryForm = ({ entry, moods, onFormSubmit, tags }) => {
     const [editMode, setEditMode] = useState(false)
     const [updatedEntry, setUpdatedEntry] = useState(entry)
 
@@ -81,6 +81,10 @@ export const EntryForm = ({ entry, moods, onFormSubmit }) => {
                             </div>
                         </div>
                     </div>
+
+                    
+
+                    
                     <div className="field">
                         <div className="control">
                             <button type="submit"

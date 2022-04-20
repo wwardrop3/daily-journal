@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { EntryForm } from "./components/EntryForm";
 import { EntryList } from "./components/EntryList";
-import { addEntry, deleteEntry, getEntries, getEntryById, updateEntry } from "./components/EntryManager";
+import { addEntry, deleteEntry, getEntries, getEntryById, getTags, updateEntry } from "./components/EntryManager";
 import { getMoods } from "./components/mood/MoodManager";
 
 export const DailyJournal = () => {
   const [entries, setEntries] = useState([])
   const [moods, setMoods] = useState([])
   const [entry, setEntry] = useState({})
+  const [tags, setTags] = useState([])
+
+  useEffect(() => {
+    getTags().then(tagsData => setTags(tagsData))
+  }, [])
+
 
   useEffect(() => {
     getAllEntries()
@@ -45,7 +51,7 @@ export const DailyJournal = () => {
     <div className="DailyJournal container">
       <div className="columns">
         <div className="column">
-          <EntryForm entry={entry} moods={moods} onFormSubmit={onFormSubmit} />
+          <EntryForm entry={entry} moods={moods} onFormSubmit={onFormSubmit} tags = {tags}/>
         </div>
         <div className="column">
           <EntryList

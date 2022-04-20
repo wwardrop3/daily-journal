@@ -24,6 +24,12 @@ export const addEntry = Entry => {
   }).then(getEntries);
 };
 
+export const getTags = () => {
+  return fetch("http://localhost:8088/tags")
+  .then(res => res.json())
+}
+
+
 export const deleteEntry = entryId => {
   return fetch(`http://localhost:8088/entries/${entryId}`, {
     method: "DELETE"
